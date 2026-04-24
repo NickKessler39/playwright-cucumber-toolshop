@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>Playwright-Java-Course-Custom</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <!-- Версии Java для компиляции -->
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- Версии ключевых библиотек вынесены сюда для удобства обновления -->
+        <allure.version>2.29.0</allure.version>
+        <aspectj.version>1.9.21</aspectj.version>
+    </properties>
+    <dependencyManagement>
+        <dependencies>
+            <!-- Allure BOM помогает Maven автоматически подбирать совместимые версии модулей Allure -->
+            <dependency>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-bom</artifactId>
+                <version>${allure.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <dependencies>
+        <!-- Движок Playwright для управления браузерами -->
+        <dependency>
+            <groupId>com.microsoft.playwright</groupId>
+            <artifactId>playwright</artifactId>
+            <version>1.48.0</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- JUnit 5 - наш фреймворк для написания и запуска тестов -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.11.3</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- JUnit Platform - это инструмент, который позволяет превратить обычный Java-класс в точку входа для запуска Cucumber -->
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite</artifactId>
+            <version>1.11.3</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- CUCUMBER:
+        1) Ты пишешь сценарий (Gherkin).
+        2) cucumber-junit-platform-engine находит этот сценарий.
+        3) cucumber-java находит в твоем проекте подходящий метод с аннотацией @Given/When/Then и выполняет его код.
+        4) cucumber-junit (иногда в паре с platform-suite, о котором мы говорили раньше) обеспечивает передачу результатов обратно в Maven или IntelliJ IDEA,
+        чтобы ты увидел зеленые галочки.-->
+        <!-- Cucumber - содержит все аннотации, которые ты будешь использовать в Java-коде: @Given, @When, @Then, @And, а также хуки @Before и @After. -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>7.20.1</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- Cucumber Junit - мост для обратной совместимости с JUnit 4 -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>7.20.1</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- Cucumber Junit Platform Engine - движок Cucumber, встраивающийся в Junit 5  -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit-platform-engine</artifactId>
+            <version>7.20.1</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- AssertJ - для красивых и читаемых проверок assertThat(...) -->
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.27.7</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- DataFaker - генерация случайных имен, почт и других данных -->
+        <dependency>
+            <groupId>net.datafaker</groupId>
+            <artifactId>datafaker</artifactId>
+            <version>2.4.2</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- Мост между JUnit 5 и Allure: собирает информацию о результатах тестов -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-junit5</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- Аспектный движок: дублируем здесь, чтобы Maven скачал его для работы javaagent -->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-cucumber7-jvm</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>2.0.9</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <!-- ПЛАГИН КОМПИЛЯЦИИ: превращает .java файлы в .class-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <!--Используем версии Java 21, заданные в начале файла-->
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <!--КРИТИЧНО ДЛЯ ALLURE: сохраняет имена переменных (username, password)
+                    Без этого в отчетах будут пустые названия аргументов вроде arg0-->
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <!--surefire обычно для unit-тестов используется, а не для UI, у него есть изъян при работе с аллюр - как только какой-то тест завалится, то
+                 отчет не будет сгенерирован, так как плагин surefire стопанет весь процесс исполнения тестов-->
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.3</version>
+                <configuration>
+                    <!--Эта строка подключает "агента" AspectJ, который передает данные в Allure
+                    Мы указываем путь к jar-файлу в твоем локальном репозитории .m2
+                    Благодаря тому, что мы прописали javaagent (наш «шпион» AspectJ) и подключили зависимость allure-junit5, allure
+                    "просыпается" при каждом запуске любого теста, даже если ты запустил один-единственный метод через зеленую стрелочку в IDEA.
+                    Суть: aspectjweaver - это инструмент, который позволяет "вклиниваться" в работу твоего кода без изменения самого кода
+                    (это называется Аспектно-ориентированное программирование).
+                    Если убрать эту строку, тесты пройдут, но Allure не увидит шаги @Step. Он просто не узнает, что метод был вызван.
+                    В отчете будет написано "TestPassed", но внутри будет пустота, никакой структуры шагов.
+                    -->
+                    <testFailureIgnore>true</testFailureIgnore>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
+                </configuration>
+                <!-- Аспектный движок: дублируем здесь, чтобы Maven скачал его для работы javaagent -->
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <!-- ПЛАГИН ГЕНЕРАЦИИ ОТЧЕТОВ ALLURE -->
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.15.0</version>
+                <configuration>
+                    <!-- Какую версию Allure использовать для генерации сайта -->
+                    <reportVersion>${allure.version}</reportVersion>
+                    <!-- Где искать JSON-результаты, чтобы превратить их в отчет
+                    ${project.build.directory} это путь к папке traget
+                    ${project.basedir} там где лежит pom.xml
+                    ${project.build.sourceDirectory} путь к src/main/java.
+                    -->
+                    <resultsDirectory>${project.build.directory}/allure-results</resultsDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <!-- Привязываем генерацию отчета к фазе verify (которую ты как раз запускал) -->
+                        <id>allure-reports</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
