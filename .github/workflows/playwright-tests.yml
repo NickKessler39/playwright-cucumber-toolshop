@@ -22,7 +22,9 @@ jobs:
           cache: maven
 
       - name: Install Playwright Browsers
-        run: mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install --with-deps"
+        run: |
+          mvn dependency:resolve
+          mvn exec:java -e -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="install --with-deps" -Dexec.classpathScope=test
 
       - name: Run Maven Tests
         run: mvn test
