@@ -29,7 +29,7 @@ public class ASimplePlaywrightTestLocators {
         @Override
         public Options getOptions() { //имлементируем обещанный метод с кастомными настройками
             return new Options()
-                    .setHeadless(false)
+                    .setHeadless(Boolean.parseBoolean(System.getProperty("headless", "true")))
                     .setTestIdAttribute("data-test") //на сайте вместо стандартного тега id используется свой - "data-test", мы объясняем Playwright, что это тоже id
                     //ее также можно добавить прямо в тестовый метод, но из-за аннотации @UsePlaywright, нужно будет передать Playwright playwright в скобки названия метода
                     //а также прописать в самом методе playwright.selectors().setTestIdAttribute("data-test");

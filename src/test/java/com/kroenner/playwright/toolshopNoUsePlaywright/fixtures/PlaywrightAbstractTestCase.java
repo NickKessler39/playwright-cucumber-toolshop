@@ -40,7 +40,7 @@ public abstract class PlaywrightAbstractTestCase {
             ThreadLocal.withInitial(
                     () ->
                         playwright.get().chromium().launch(
-                                new BrowserType.LaunchOptions().setHeadless(false)
+                                new BrowserType.LaunchOptions().setHeadless(Boolean.parseBoolean(System.getProperty("headless", "true")))
                                         .setArgs(Arrays.asList("--no-sandbox", "--disable-extensions", "--disable-notifications", "--start-maximized"))
                                 //.setSlowMo(100)
                         )

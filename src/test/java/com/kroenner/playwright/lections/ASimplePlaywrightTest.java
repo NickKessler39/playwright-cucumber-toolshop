@@ -19,7 +19,7 @@ public class ASimplePlaywrightTest {
         @Override
         public Options getOptions() { //имлементируем обещанный метод с кастомными настройками
             return new Options()
-                    //.setHeadless(false)
+                    .setHeadless(Boolean.parseBoolean(System.getProperty("headless", "true")))
                     .setLaunchOptions(
                             new BrowserType.LaunchOptions()
                                     .setArgs(Arrays.asList("--disable-extensions", "--disable-notifications"))

@@ -23,7 +23,7 @@ public abstract class PlaywrightAbstractTestCaseNoParallel {
         playwright = Playwright.create();
         playwright.selectors().setTestIdAttribute("data-test");
         browser = playwright.chromium().launch(
-                new BrowserType.LaunchOptions().setHeadless(false)
+                new BrowserType.LaunchOptions().setHeadless(Boolean.parseBoolean(System.getProperty("headless", "true")))
                         .setArgs(Arrays.asList("--no-sandbox", "--disable-extensions", "--disable-notifications", "--start-maximized"))
                         //.setSlowMo(100)
         );

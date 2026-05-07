@@ -24,7 +24,7 @@ public class AddingItemsToTheCartTest {
         @Override
         public Options getOptions() {
             return new Options()
-                    .setHeadless(false)
+                    .setHeadless(Boolean.parseBoolean(System.getProperty("headless", "true")))
                     .setTestIdAttribute("data-test")
                     .setLaunchOptions(
                             new BrowserType.LaunchOptions()

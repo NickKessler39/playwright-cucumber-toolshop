@@ -29,7 +29,7 @@ public class ASimplePlaywrightTestBrowserContext {
         playwright = Playwright.create();  //create environment, инициируем объект Playwright (запускаем движок)
         browser = playwright.chromium().launch( //open browser, инициируем объект Browser (просим у движка запустить процесс браузера, поэтому ".playwright.chromium()")
                 new BrowserType.LaunchOptions() //добавляем LaunchOptions в playwright.chromium().launch()
-                        .setHeadless(false)
+                        .setHeadless(Boolean.parseBoolean(System.getProperty("headless", "true")))
                         .setArgs(Arrays.asList("--disable-extensions", "--disable-notifications"))
         );
         browserContext = browser.newContext(); //просим у запущенного браузера создать контекс, «номер в гостинице» (изолированную среду)

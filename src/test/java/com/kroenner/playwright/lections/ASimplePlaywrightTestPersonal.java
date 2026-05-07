@@ -29,7 +29,7 @@ public class ASimplePlaywrightTestPersonal {
         playwright = Playwright.create();  //create environment, иницируем объект Playwright
         browser = playwright.chromium().launch( //open browser, иницируем объект Browser
                 new BrowserType.LaunchOptions() //добавляем LaunchOptions в playwright.chromium().launch()
-                        .setHeadless(false)
+                        .setHeadless(Boolean.parseBoolean(System.getProperty("headless", "true")))
                         .setArgs(Arrays.asList("--disable-extensions", "--disable-notifications"))
         );
         page = browser.newPage(); //create a page, иницируем объект Page
