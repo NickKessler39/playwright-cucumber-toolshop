@@ -16,7 +16,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThat;
 
 @UsePlaywright(AddingItemsToTheCartTest.MyOptions.class)
 public class AddingItemsToTheCartTest {
