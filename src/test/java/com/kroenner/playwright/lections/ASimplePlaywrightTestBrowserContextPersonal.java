@@ -2,7 +2,6 @@ package com.kroenner.playwright.lections;
 
 import com.microsoft.playwright.*;
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.Assertions;
 
 import java.util.Arrays;
 import java.util.regex.Pattern;

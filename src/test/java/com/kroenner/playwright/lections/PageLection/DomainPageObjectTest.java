@@ -1,19 +1,14 @@
 package com.kroenner.playwright.lections.PageLection;
 
 import com.kroenner.playwright.lections.PageLection.LectionDomain.CartLineItem;
+import com.kroenner.playwright.lections.PageLection.LectionPages.*;
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.AriaRole;
-import com.kroenner.playwright.lections.PageLection.LectionPages.SearchComponent;
-import com.kroenner.playwright.lections.PageLection.LectionPages.ProductDetails;
-import com.kroenner.playwright.lections.PageLection.LectionPages.ProductList;
-import com.kroenner.playwright.lections.PageLection.LectionPages.NavBar;
-import com.kroenner.playwright.lections.PageLection.LectionPages.CheckoutCart;
 import org.junit.jupiter.api.*;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class DomainPageObjectTest {

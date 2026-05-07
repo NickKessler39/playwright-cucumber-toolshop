@@ -2,7 +2,6 @@ package com.kroenner.playwright.lections.PageLection.LectionDomain;
 
 import com.kroenner.playwright.lections.PageLection.LectionPages.*;
 import com.microsoft.playwright.*;
-import com.microsoft.playwright.options.AriaRole;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.*;
 

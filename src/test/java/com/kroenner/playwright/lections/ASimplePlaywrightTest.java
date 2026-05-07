@@ -1,7 +1,7 @@
 package com.kroenner.playwright.lections;
 
-import com.microsoft.playwright.*;
-
+import com.microsoft.playwright.BrowserType;
+import com.microsoft.playwright.Page;
 import com.microsoft.playwright.junit.Options;
 import com.microsoft.playwright.junit.OptionsFactory;
 import com.microsoft.playwright.junit.UsePlaywright;

@@ -4,10 +4,8 @@ import com.kroenner.playwright.toolshopNoUsePlaywright.catalog.pageobjects.NavBa
 import com.kroenner.playwright.toolshopNoUsePlaywright.catalog.pageobjects.ProductList;
 import com.kroenner.playwright.toolshopNoUsePlaywright.catalog.pageobjects.SearchComponent;
 import com.kroenner.playwright.toolshopNoUsePlaywright.fixtures.ProductSummary;
-import io.cucumber.datatable.DataTable;
 import io.cucumber.java.Before;
 import io.cucumber.java.DataTableType;
-import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

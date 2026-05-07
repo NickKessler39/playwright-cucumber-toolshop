@@ -3,17 +3,14 @@ package com.kroenner.playwright.toolshopNoUsePlaywright.catalog;
 import com.kroenner.playwright.toolshopNoUsePlaywright.catalog.pageobjects.*;
 import com.kroenner.playwright.toolshopNoUsePlaywright.fixtures.PlaywrightAbstractTestCase;
 import com.kroenner.playwright.toolshopNoUsePlaywright.fixtures.WithTracing;
-import com.microsoft.playwright.BrowserContext;
-import com.microsoft.playwright.Tracing;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
-import java.nio.file.Paths;
 import java.util.List;
-
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 @DisplayName("Cart Tests")
 @Feature("Shopping Cart")

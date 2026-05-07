@@ -13,7 +13,6 @@ import com.microsoft.playwright.assertions.PlaywrightAssertions;
 import com.microsoft.playwright.options.LoadState;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -21,7 +20,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.HashMap;
 import java.util.stream.Stream;
 
-import static java.nio.file.Files.isHidden;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("Search Tests")

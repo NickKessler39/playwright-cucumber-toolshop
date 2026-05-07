@@ -4,7 +4,6 @@ import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
 import java.util.List;
-import java.util.regex.Pattern;
 
 public class ProductList {
     private final Page page;

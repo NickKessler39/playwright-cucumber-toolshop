@@ -13,8 +13,6 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.Comparator;
 
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-
 @UsePlaywright(WaitingForAPICalls.MyOptions.class)
 
 public class WaitingForAPICalls {

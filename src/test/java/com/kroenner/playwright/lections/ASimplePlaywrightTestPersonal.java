@@ -1,14 +1,11 @@
 package com.kroenner.playwright.lections;
 
 import com.microsoft.playwright.*;
-import com.microsoft.playwright.junit.UsePlaywright;
-import com.microsoft.playwright.options.AriaRole;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.regex.Pattern;
 

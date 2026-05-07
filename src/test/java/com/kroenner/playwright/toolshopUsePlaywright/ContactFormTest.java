@@ -1,7 +1,6 @@
 package com.kroenner.playwright.toolshopUsePlaywright;
 
 import com.kroenner.playwright.toolshopNoUsePlaywright.contact.pageobjects.ContactForm;
-import com.kroenner.playwright.toolshopNoUsePlaywright.fixtures.PlaywrightAbstractTestCase;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.junit.UsePlaywright;
 import com.microsoft.playwright.options.AriaRole;
