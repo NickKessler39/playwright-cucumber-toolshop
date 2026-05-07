@@ -45,7 +45,7 @@ jobs:
             ${{ runner.os }}-maven
 
       - name: Run Playwright Tests
-        run: mvn verify allure:report -Dheadless=true
+        run: mvn verify io.qameta.allure:allure-maven:report -Dheadless=true
 
       - name: Archive trace files
         if: always()
