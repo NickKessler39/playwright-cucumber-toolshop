@@ -46,9 +46,9 @@ public class ContactFormTest extends PlaywrightAbstractTestCase {
         contactForm.setSubject("warranty");
         contactForm.setAttachment(fileToUpload);
 
-        assertThat(contactForm.getFirstNameField()).hasValue("Sarah-Jane");
-        assertThat(contactForm.getLastNameField()).not().hasValue("Kek");
-        assertThat(contactForm.getLastNameField()).hasValue("Kessler");
+        assertThat(contactForm.getFirstNameField()).hasValue("Sarah-Jane22");
+        assertThat(contactForm.getLastNameField()).not().hasValue("Kek22");
+        assertThat(contactForm.getLastNameField()).hasValue("Kessler22");
         assertThat(contactForm.getEmailField()).hasValue("sjkessler@mail.com");
         assertThat(contactForm.getMessageField()).hasValue("Hello, world!\nВторая строка\nТретья строка\nЧетвертая строка\nПятая строка");
         assertThat(contactForm.getSubjectField()).hasValue("warranty");
