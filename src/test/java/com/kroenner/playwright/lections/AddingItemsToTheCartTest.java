@@ -16,7 +16,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThat;
 
 @UsePlaywright(AddingItemsToTheCartTest.MyOptions.class)
 public class AddingItemsToTheCartTest {
@@ -24,7 +23,7 @@ public class AddingItemsToTheCartTest {
         @Override
         public Options getOptions() {
             return new Options()
-                    .setHeadless(false)
+                    .setHeadless(Boolean.parseBoolean(System.getProperty("headless", "true")))
                     .setTestIdAttribute("data-test")
                     .setLaunchOptions(
                             new BrowserType.LaunchOptions()

@@ -1,14 +1,11 @@
 package com.kroenner.playwright.lections;
 
 import com.microsoft.playwright.*;
-import com.microsoft.playwright.junit.UsePlaywright;
-import com.microsoft.playwright.options.AriaRole;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.regex.Pattern;
 
@@ -29,7 +26,7 @@ public class ASimplePlaywrightTestPersonal {
         playwright = Playwright.create();  //create environment, иницируем объект Playwright
         browser = playwright.chromium().launch( //open browser, иницируем объект Browser
                 new BrowserType.LaunchOptions() //добавляем LaunchOptions в playwright.chromium().launch()
-                        .setHeadless(false)
+                        .setHeadless(Boolean.parseBoolean(System.getProperty("headless", "true")))
                         .setArgs(Arrays.asList("--disable-extensions", "--disable-notifications"))
         );
         page = browser.newPage(); //create a page, иницируем объект Page

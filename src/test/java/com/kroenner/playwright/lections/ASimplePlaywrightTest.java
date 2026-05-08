@@ -1,7 +1,7 @@
 package com.kroenner.playwright.lections;
 
-import com.microsoft.playwright.*;
-
+import com.microsoft.playwright.BrowserType;
+import com.microsoft.playwright.Page;
 import com.microsoft.playwright.junit.Options;
 import com.microsoft.playwright.junit.OptionsFactory;
 import com.microsoft.playwright.junit.UsePlaywright;
@@ -19,7 +19,7 @@ public class ASimplePlaywrightTest {
         @Override
         public Options getOptions() { //имлементируем обещанный метод с кастомными настройками
             return new Options()
-                    //.setHeadless(false)
+                    .setHeadless(Boolean.parseBoolean(System.getProperty("headless", "true")))
                     .setLaunchOptions(
                             new BrowserType.LaunchOptions()
                                     .setArgs(Arrays.asList("--disable-extensions", "--disable-notifications"))

@@ -6,10 +6,10 @@ import com.microsoft.playwright.junit.Options;
 import com.microsoft.playwright.junit.OptionsFactory;
 import com.microsoft.playwright.junit.UsePlaywright;
 import com.microsoft.playwright.options.LoadState;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.assertj.core.api.Assertions;
 
 import java.util.*;
 
@@ -22,7 +22,7 @@ public class AssertionsTests {
         @Override
         public Options getOptions() {
             return new Options()
-                    .setHeadless(false)
+                    .setHeadless(Boolean.parseBoolean(System.getProperty("headless", "true")))
                     .setTestIdAttribute("data-test")
                     .setLaunchOptions(new BrowserType.LaunchOptions()
                             .setArgs(Arrays.asList("--disable extensions", "--disable-notifications"))

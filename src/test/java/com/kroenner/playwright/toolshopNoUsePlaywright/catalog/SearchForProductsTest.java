@@ -9,10 +9,6 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.parallel.Execution;
-import org.junit.jupiter.api.parallel.ExecutionMode;
-
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 //@Execution(ExecutionMode.SAME_THREAD) //Здесь мы делаем override наших properties, даже если там будет стоять
 //junit.jupiter.execution.parallel.mode.default=concurrent, то в этом тестовом классе тесты будут бежать друг за другом - SAME_THREAD

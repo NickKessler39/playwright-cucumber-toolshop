@@ -13,8 +13,6 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.Comparator;
 
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-
 @UsePlaywright(WaitingForAPICalls.MyOptions.class)
 
 public class WaitingForAPICalls {
@@ -22,7 +20,7 @@ public class WaitingForAPICalls {
         @Override
         public Options getOptions() {
             return new Options()
-                    .setHeadless(false)
+                    .setHeadless(Boolean.parseBoolean(System.getProperty("headless", "true")))
                     .setTestIdAttribute("data-test")
                     .setLaunchOptions(new BrowserType.LaunchOptions()
                             .setArgs(Arrays.asList("--disable extensions", "--disable-notifications"))

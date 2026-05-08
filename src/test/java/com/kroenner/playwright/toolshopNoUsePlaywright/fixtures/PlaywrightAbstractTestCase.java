@@ -1,16 +1,11 @@
 package com.kroenner.playwright.toolshopNoUsePlaywright.fixtures;
 
 import com.microsoft.playwright.*;
-import io.qameta.allure.Allure;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
-import java.io.ByteArrayInputStream;
 import java.util.Arrays;
-
-import static com.kroenner.playwright.toolshopNoUsePlaywright.fixtures.ScreenshotManager.takeScreenshot;
 
 
 public abstract class PlaywrightAbstractTestCase {
@@ -40,7 +35,7 @@ public abstract class PlaywrightAbstractTestCase {
             ThreadLocal.withInitial(
                     () ->
                         playwright.get().chromium().launch(
-                                new BrowserType.LaunchOptions().setHeadless(false)
+                                new BrowserType.LaunchOptions().setHeadless(Boolean.parseBoolean(System.getProperty("headless", "true")))
                                         .setArgs(Arrays.asList("--no-sandbox", "--disable-extensions", "--disable-notifications", "--start-maximized"))
                                 //.setSlowMo(100)
                         )
